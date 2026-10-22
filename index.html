@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hold oversikt over matvarer, utløpsdatoer og oppskrifter med FreshKeep.">
+    <title>FreshKeep – mindre matsvinn</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">🌿</span>
+            <span>FreshKeep</span>
+        </a>
+        <p class="tagline">Mindre matsvinn, mer smak.</p>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">DITT KJØKKEN, DIN OVERSIKT</p>
+                <h1>Hei! Hva har du i kjøleskapet?</h1>
+                <p>Hold orden på matvarene dine og bruk dem før de går ut på dato.</p>
+            </div>
+            <div class="welcome-icon" aria-hidden="true">🥑</div>
+        </section>
+
+        <section class="stats" aria-label="Oversikt">
+            <article class="stat-card">
+                <span class="stat-icon">🧺</span>
+                <p>Matvarer totalt</p>
+                <strong id="total-count">0</strong>
+            </article>
+            <article class="stat-card warning-card">
+                <span class="stat-icon">⏰</span>
+                <p>Går snart ut</p>
+                <strong id="expiring-count">0</strong>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon">🍃</span>
+                <p>Brukt opp</p>
+                <strong id="used-count">0</strong>
+            </article>
+        </section>
+
+        <section class="panel" id="food-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MATVAREOVERSIKT</p>
+                    <h2>Matvarene mine</h2>
+                </div>
+                <span class="section-emoji">🥕</span>
+            </div>
+
+            <form id="food-form" class="food-form">
+                <div class="form-field">
+                    <label for="food-name">Navn på matvare</label>
+                    <input id="food-name" name="foodName" type="text"
+                           placeholder="F.eks. melk" required maxlength="60">
+                </div>
+
+                <div class="form-field">
+                    <label for="food-category">Kategori</label>
+                    <select id="food-category" name="category" required>
+                        <option value="Meieri">Meieri</option>
+                        <option value="Frukt og grønt">Frukt og grønt</option>
+                        <option value="Kjøtt og fisk">Kjøtt og fisk</option>
+                        <option value="Tørrvarer">Tørrvarer</option>
+                        <option value="Annet">Annet</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="food-date">Utløpsdato</label>
+                    <input id="food-date" name="expiryDate" type="date" required>
+                </div>
+
+                <button class="primary-button" type="submit">+ Legg til</button>
+            </form>
+
+            <div class="inventory-toolbar">
+                <h3>Oversikt over varer</h3>
+                <label class="filter-label" for="food-filter">
+                    <span class="sr-only">Filtrer matvarer</span>
+                    <select id="food-filter">
+                        <option value="all">Alle varer</option>
+                        <option value="soon">Går snart ut</option>
+                        <option value="expired">Utgått på dato</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="food-list" class="food-list">
+                <div class="empty-state">
+                    <span>🥦</span>
+                    <h3>Kjøleskapet er tomt</h3>
+                    <p>Legg til din første matvare for å komme i gang!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel recipes-panel" id="recipes-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SMART MATLAGING</p>
+                    <h2>Hva kan jeg lage?</h2>
+                    <p>Finn oppskrifter med matvarene du allerede har hjemme.</p>
+                </div>
+                <span class="section-emoji">👩‍🍳</span>
+            </div>
+
+            <div class="recipe-intro">
+                <span>💡</span>
+                <p>Vi prioriterer oppskrifter som bruker matvarer som snart går ut på dato.</p>
+            </div>
+
+            <div id="recipe-list" class="recipe-grid">
+                <p class="empty-recipes">Legg til matvarer for å få oppskriftsforslag.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>🌱 FreshKeep – små grep for mindre matsvinn.</p>
+        </footer>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
